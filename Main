@@ -1,0 +1,73 @@
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+  final String myCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; 
+  int cryptionKey;
+
+  Scanner myHolding = new Scanner(System.in);
+
+  System.out.println("Please enter a message:");
+  String userInput = myHolding.nextLine();
+    
+  
+  System.out.println("Enter 1 for encrypting and 2 for decrypting:");
+      int numericKey = myHolding.nextInt();
+      
+
+  while (numericKey != 1 & numericKey != 2) {
+     System.out.println("Invalid selection. Please enter 1 for encrypting and 2 for decrypting:");
+     System.out.println("Enter 1 for encrypting and 2 for decrypting:");
+      numericKey = myHolding.nextInt();
+     
+
+    
+    
+  }
+
+  if (numericKey == 1 || numericKey ==2) {
+    System.out.println("You chose encryption.");
+    System.out.println("Choose a numeric key for your cipher:");
+    int cryption = myHolding.nextInt();
+     cryptionKey = cryption;
+      if (cryptionKey < 1) {
+        System.out.println("You must choose a numeric key for your cipher. Please enter a numeric key:");
+        cryptionKey = myHolding.nextInt();
+        }
+         myHolding.close();
+
+    }
+      else {
+        System.out.println("You chose decryption.");
+        System.out.println("Please enter the numeric key for your cipher:");
+        int cryption = myHolding.nextInt();
+         cryptionKey = cryption;
+          if (cryptionKey < 1) {
+            System.out.println("You must have the numeric key to decrypt your cipher. Please enter the numeric key:");
+             cryptionKey = myHolding.nextInt();
+     }
+     myHolding.close();
+  }
+    
+    for (int i = 0; i < userInput.length(); i++) {
+        String symbol = userInput.substring(i);
+      
+    if (myCharacters.contains(symbol)) {
+        
+          int position = myCharacters.indexOf(symbol);
+          int newPosition = (position + cryptionKey);
+          char newCharacter = myCharacters.charAt(newPosition);
+          userInput += newCharacter;
+            } 
+
+            else {
+              userInput += symbol;
+            } 
+        }  
+    
+
+  System.out.println("Your new message is" + userInput + ".");
+  
+  
+
+  }
+}
